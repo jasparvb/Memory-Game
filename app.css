@@ -1,0 +1,178 @@
+html {
+    font-size: 30px;
+}
+
+body {
+    background-color: crimson;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body .header, #game {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 0 100px 0;
+}
+
+section {
+    text-align: center;
+}
+
+h1 {
+    font-size: 4rem;
+    font-family: 'Black Ops One', Arial, Helvetica, sans-serif;
+    margin: 4rem 0 0 0;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+button {
+    font-size: 1rem;
+    font-family: 'Black Ops One', Arial, Helvetica, sans-serif;
+    border: 0.2rem solid black;
+    border-radius: 0.2rem;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 330px;
+}
+
+button:focus {
+    border-radius: 0.2rem;
+    outline: none;
+}
+
+button:hover {
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 8px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px 3px rgba(0,0,0,.12);
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 100px;
+    height: 140px;
+    perspective: 1000px;
+    margin: 10px;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.flip-card .active:hover {
+    transform: scale(1.04);
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flipped .flip-card-inner, .matched .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.matched {
+    opacity: .8;
+}
+
+.matched::after {
+    content: '';
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 10px;
+    right: 6px;
+    background: url(images/checkmark.png) center/95% no-repeat;
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.flip-card-front {
+    background-color: #d9d9d9;
+    color: black;
+    border-radius: 5px;
+    border: 3px solid white;
+    cursor: pointer;
+}
+.flip-card-front::after {
+    content: '';
+    height: 80%;
+    width: 80%;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    background: url(images/barcelona-crest.png) center/95% no-repeat;
+}
+
+
+.flip-card-back {
+    background-size: cover;
+    background-position: center;
+    color: white;
+    transform: rotateY(180deg);
+    border-radius: 5px;
+    border: 3px solid white;
+    left: -6px;
+}
+.flip-card-front:hover, .flip-card-back:hover {
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 8px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px 3px rgba(0,0,0,.12);
+}
+
+.flip-card.matched .flip-card-back:hover {
+    box-shadow: none;
+}
+
+#game {
+    max-width: 960px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+#game.started {
+    opacity: 1;
+    transform: translateY(-40px);
+}
+
+.best-score, .current-score {
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.game-message {
+    position: absolute;
+    z-index: 1;
+    width: 60%;
+    height: 60%;
+    top: 130px;
+    background: #ffffff;
+    bottom: 0;
+    right: 0px;
+    left: 200px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 8px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px 3px rgba(0,0,0,.12);
+    opacity: 1;
+    display: block;
+}
+
+.game-message.hide, .high-score.hide {
+    opacity: 0;
+    display: none;
+}
+.high-score {
+    font-size: 0.9rem;
+    margin-top: -20px;
+    display: block;
+}
